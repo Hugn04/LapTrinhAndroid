@@ -1,169 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp">
-
-        <RadioButton
-            android:id="@+id/radioButtonNho"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="nhỏ" />
-
-        <RadioButton
-            android:id="@+id/radioButtonVua"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="vừa"
-            android:checked="true" />
-
-        <RadioButton
-            android:id="@+id/radioButtonTo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="to" />
-    </RadioGroup>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <LinearLayout
+        android:id="@+id/frameLayour"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3">
+        android:layout_height="70dp"
+        tools:ignore="MissingConstraints">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:hint="Hung"
-            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New APP" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thêm" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewTongSoBai"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tổng số bài"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp" />
+    <ListView
+        android:id="@+id/listViewTask"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        tools:layout_editor_absoluteX="-16dp"
+        android:layout_height="0dp" />
 
-    <EditText
-        android:id="@+id/editTextTongSoBai"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:text="3"
-        android:inputType="number"
-        app:layout_constraintTop_toTopOf="@id/textViewTongSoBai"
-        app:layout_constraintBottom_toBottomOf="@id/textViewTongSoBai"
-        app:layout_constraintStart_toEndOf="@id/textViewTongSoBai"
-        android:layout_marginStart="8dp" />
+    <!--    <com.google.android.material.textfield.TextInputEditText-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content">-->
 
-    <TextView
-        android:id="@+id/textViewTenTep"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tên tệp"
-        app:layout_constraintTop_toBottomOf="@id/textViewTongSoBai"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp" />
-
-    <EditText
-        android:id="@+id/editTextTenTep"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/textViewTenTep"
-        app:layout_constraintBottom_toBottomOf="@id/textViewTenTep"
-        app:layout_constraintStart_toEndOf="@id/textViewTenTep"
-        app:layout_constraintEnd_toStartOf="@id/textViewTxt"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:id="@+id/textViewTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=".txt"
-        app:layout_constraintTop_toTopOf="@id/editTextTenTep"
-        app:layout_constraintBottom_toBottomOf="@id/editTextTenTep"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="16dp" />
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/editTextTenTep"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/editText1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/editText2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp" />
-
-    <Button
-        android:id="@+id/buttonDocLai"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Đọc lại"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/buttonLuuVao"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp" />
-
-    <Button
-        android:id="@+id/buttonLuuVao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lưu vào"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/buttonDocLai"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp" />
-
-<!--    <com.google.android.material.textfield.TextInputEditText-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content">-->
-
-<!--    </com.google.android.material.textfield.TextInputEditText>-->
+    <!--    </com.google.android.material.textfield.TextInputEditText>-->
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
