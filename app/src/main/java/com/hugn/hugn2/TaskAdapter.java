@@ -8,18 +8,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
-
 import java.util.List;
 
-public class TaskAdapter  extends BaseAdapter {
-    private Context context;
+public class TaskAdapter extends BaseAdapter {
+    private MainActivity context;
     private int layout;
     private List<Task> taskList;
 
-
-    public TaskAdapter(Context context, int layout, List<Task> taskList) {
+    public TaskAdapter(MainActivity context, int layout, List<Task> taskList) {
         this.context = context;
         this.layout = layout;
         this.taskList = taskList;
@@ -27,17 +23,22 @@ public class TaskAdapter  extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return taskList.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return taskList.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
+    }
+
+    private static class ViewHolder {
+        TextView txtName;
+        ImageView imgDelete, imgEdit;
     }
 
     @Override
@@ -48,23 +49,32 @@ public class TaskAdapter  extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
             holder.txtName = (TextView) view.findViewById(R.id.txtName);
-            holder.imgDelete=(ImageView) view.findViewById(R.id.imgDelete);
-            holder.imgEdit=(ImageView) view.findViewById(R.id.imgEdit);
+            holder.imgDelete = (ImageView) view.findViewById(R.id.imgDelete);
+            holder.imgEdit = (ImageView) view.findViewById(R.id.imgEdit);
             view.setTag(holder);
-
-            return null;
-
-        }else {
+        } else {
             holder = (ViewHolder) view.getTag();
         }
-        Task task = this.taskList.get(i);
+
+        final Task task = taskList.get(i);
         holder.txtName.setText(task.getTaskName());
 
-        return  view;
-    }
-    private class  ViewHolder {
-        TextView txtName;
-        ImageView imgDelete, imgEdit;
+        // Set up click listeners for edit and delete buttons
+        holder.imgEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.showEditDialog(task);
+            }
+        });
 
+        holder.imgDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.database.queryData("DELETE FROM Task WHERE id = " + task.getId());
+                context.loadTasks();
+            }
+        });
+
+        return view;
     }
 }
